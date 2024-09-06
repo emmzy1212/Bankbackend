@@ -1,5 +1,5 @@
 // corsOptions.js
-const whiteList = ["http://localhost:8081", "https://www.google.com", "https://bankpg.vercel.app"];
+const whiteList = ["http://localhost:5000", "https://www.google.com", "https://bankbackend-nine.vercel.app"];
 
 const corsOption = {
     origin: (origin, callback) => {
