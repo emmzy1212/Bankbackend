@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 import transactionRoutes from './Routes/Routes.js';
 import userRoutes from './Routes/Routes.js';
 import bodyParser from 'body-parser';
+// to be able to connect to the backend i have to use this cors this way where my link to frontend will be 
+import corsOption from './Cors.js'; // Import the custom CORS options
 
 
 dotenv.config();
@@ -13,7 +15,7 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors(corsOption)); // Use the custom CORS options
 app.use(express.json());
 
 // Routes
