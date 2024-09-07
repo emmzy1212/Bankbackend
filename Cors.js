@@ -1,18 +1,48 @@
-const whiteList = ["http://localhost:5000", "https://bankpg.vercel.app", "https://bankbackend-nine.vercel.app"];
+const whiteList = [
+    "http://localhost:5000", 
+    "https://bankpg.vercel.app", 
+    "https://bankpg-owv4.vercel.app", // New frontend URL
+    "https://bankbackend-nine.vercel.app"
+];
 
 const corsOption = {
     origin: (origin, callback) => {
-        // Allow requests with no origin (e.g., mobile apps, Postman) or from whitelisted origins
+        // Allow requests with no origin (e.g., mobile apps or Postman) or from whitelisted origins
         if (!origin || whiteList.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
             callback(new Error("Not allowed by CORS"));
         }
     },
-    credentials: true, // Allow credentials such as cookies and headers
+    credentials: true, // Allow cookies or other credentials
     methods: "GET, POST, PUT, DELETE", // Allowed methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-    optionsSuccessStatus: 200 // Some legacy browsers choke on 204
+    optionsSuccessStatus: 200 // For legacy browser compatibility
 };
 
-export default corsOption; // ES6 export
+export default corsOption;
+
+
+
+
+
+
+
+// const whiteList = ["http://localhost:5000", "https://bankpg.vercel.app", "https://bankbackend-nine.vercel.app"];
+
+// const corsOption = {
+//     origin: (origin, callback) => {
+//         // Allow requests with no origin (e.g., mobile apps, Postman) or from whitelisted origins
+//         if (!origin || whiteList.indexOf(origin) !== -1) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error("Not allowed by CORS"));
+//         }
+//     },
+//     credentials: true, // Allow credentials such as cookies and headers
+//     methods: "GET, POST, PUT, DELETE", // Allowed methods
+//     allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+//     optionsSuccessStatus: 200 // Some legacy browsers choke on 204
+// };
+
+// export default corsOption; // ES6 export
