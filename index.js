@@ -1,4 +1,3 @@
-// app.js
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -6,9 +5,7 @@ import dotenv from 'dotenv';
 import transactionRoutes from './Routes/Routes.js';
 import userRoutes from './Routes/Routes.js';
 import bodyParser from 'body-parser';
-// to be able to connect to the backend i have to use this cors this way where my link to frontend will be 
 import corsOption from './Cors.js'; // Import the custom CORS options
-
 
 dotenv.config();
 
@@ -17,14 +14,11 @@ const app = express();
 // Middleware
 app.use(cors(corsOption)); // Use the custom CORS options
 app.use(express.json());
+app.use(bodyParser.json());
 
 // Routes
 app.use('/api', transactionRoutes);
-
-// Use Routes
 app.use('/api/users', userRoutes);
-
-app.use(bodyParser.json());
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -37,7 +31,8 @@ app.use((req, res, next) => {
     res.status(404).json({ error: 'Not Found' });
 });
 
-
+// Handle preflight requests (OPTIONS)
+app.options('*', cors(corsOption)); // This ensures proper preflight handling
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
