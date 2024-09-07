@@ -11,8 +11,13 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
-app.use(cors(corsOption)); // Use the custom CORS options
+// Apply CORS middleware
+app.use(cors(corsOption));
+
+// Handle preflight OPTIONS requests globally
+app.options('*', cors(corsOption));
+// // Middleware
+// app.use(cors(corsOption)); // Use the custom CORS options
 app.use(express.json());
 app.use(bodyParser.json());
 
