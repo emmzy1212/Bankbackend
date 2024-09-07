@@ -1,27 +1,27 @@
+// corsOptions.js
 const whiteList = [
-    "http://localhost:5000", 
-    "https://bankpg.vercel.app", 
-    "https://bankpg-owv4.vercel.app", // New frontend URL
+    "http://localhost:3000", 
+    "https://bankpg-owv4.vercel.app", // Add frontend URL
+    "https://bankpg-owv4.vercel.app", 
     "https://bankbackend-nine.vercel.app"
 ];
 
-const corsOption = {
+const corsOptions = {
     origin: (origin, callback) => {
-        // Allow requests with no origin (e.g., mobile apps or Postman) or from whitelisted origins
+        // Allow requests from whitelisted origins or with no origin (like mobile apps)
         if (!origin || whiteList.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
-            callback(new Error("Not allowed by CORS"));
+            callback(new Error('Not allowed by CORS'));
         }
     },
-    credentials: true, // Allow cookies or other credentials
-    methods: "GET, POST, PUT, DELETE", // Allowed methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-    optionsSuccessStatus: 200 // For legacy browser compatibility
+    credentials: true, // Allow cookies/credentials
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    optionsSuccessStatus: 200, // For legacy browsers
 };
 
-export default corsOption;
-
+export default corsOptions;
 
 
 
