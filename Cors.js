@@ -1,7 +1,9 @@
 // corsOptions.js
 
 const whiteList = [
-    "https://bankpg-owv4.vercel.app",
+    // "https://bankpg-owv4.vercel.app",
+
+    "https://bankbackend-nine.vercel.app",
     "http://localhost:5000"
   ];
   
