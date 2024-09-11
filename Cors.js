@@ -3,6 +3,7 @@
 
 const whiteList = [
 
+    "https://bankpg-owv4.vercel.app", // Replace with your actual frontend URL
     "https://bankpg.netlify.app", // Replace with your actual frontend URL
     "http://localhost:5000" // Local development URL if applicable
 
