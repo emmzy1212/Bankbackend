@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import transactionRoutes from '../routes/routes.js'; // Adjust the path to your routes file
-import userRoutes from '../routes/routes.js'; // Adjust the path to your routes file
+import transactionRoutes from './Routes/Routes.js';
+import userRoutes from './Routes/Routes.js';
 
 dotenv.config();
 
