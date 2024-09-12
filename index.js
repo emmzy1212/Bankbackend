@@ -3,15 +3,21 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import transactionRoutes from './Routes/Routes.js';
-import userRoutes from './Routes/Routes.js';
+import transactionRoutes from '../routes/routes.js'; // Adjust the path to your routes file
+import userRoutes from '../routes/routes.js'; // Adjust the path to your routes file
 
 dotenv.config();
 
 const app = express();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+    origin: ['https://bankpg-owv4.vercel.app'], // Allow your frontend origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions)); // Use CORS with options
 app.use(express.json());
 app.use(bodyParser.json());
 
